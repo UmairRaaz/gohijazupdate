@@ -1,0 +1,81 @@
+.react-calendar {
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .react-calendar__tile {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .react-calendar__tile div {
+    margin-top: 0px;
+  }
+  
+  .react-calendar__tile--active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+  }
+  
+  .react-calendar__tile.highlight-tile {
+    background-color: #ffcccb;
+    color: black;
+    /* font-weight: bold; */
+    margin: 2px 0;
+  }
+  
+  .react-calendar__navigation button {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+  
+  .react-calendar__tile--now {
+    background-color: #ffe4b5;
+    border-radius: 8px;
+  }
+  
+  /* Make the booking dates smaller */
+  .react-calendar__tile .booking-badge {
+    font-size: 10px; /* Adjust font size for bookings */
+    padding: 3px 6px;
+  }
+  
+  /* Make Saturday and Sunday dates black */
+  /* Target all elements inside the react-calendar */
+
+
+/* Optional: Target specific components for more control */
+.react-calendar__tile,
+.react-calendar__tile--active,
+.react-calendar__tile--now,
+.react-calendar__tile.highlight-tile,
+.react-calendar__navigation button,
+.react-calendar__month-view__weekdays {
+  color: black; /* Ensure text color stays black where needed */
+}
+
+/* Make Saturday and Sunday dates black */
+.react-calendar__tile--saturday,
+.react-calendar__tile--sunday {
+  color: black !important; /* Force black text color for weekends */
+  font-weight: bold;
+  background-color: red; /* Optional: Customize weekend background */
+}

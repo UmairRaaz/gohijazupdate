@@ -1,0 +1,21 @@
+/* TopTravelAgencies.module.css */
+.custom-arrow {
+    z-index: 1;
+    padding: 12px;
+    background-color: #1f2937; /* Dark background for arrows */
+    color: white;
+    border-radius: 50%;
+    border: 2px solid #fff; /* White border for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .custom-arrow:hover {
+    background-color: #111827; /* Darker background on hover */
+  }
+  
+  .custom-arrow:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4f46e5; /* Blue focus ring */
+  }
+  
