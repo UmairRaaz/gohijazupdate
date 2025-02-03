@@ -2,29 +2,81 @@
 import FAQSection from "../components/FAQSection";
 
 const UmrahGuide = () => {
-  const umrahFAQs = [
+  const umrahVisaFAQs = [
     {
-      question: "What is The Best Time To Perform Umrah?",
+      question: "What is an Umrah visa?",
       answer:
-        "Umrah can be performed at any time of the year, but the months of Ramadan and the off-peak seasons (outside of Hajj) are considered ideal due to lesser crowds and greater spiritual rewards during Ramadan.",
+        "An Umrah visa is a special visa issued to Muslims for performing Umrah (a minor pilgrimage) in Makkah. It is available year-round, except during the Hajj season.",
     },
     {
-      question: "How Long Does Umrah Typically Take?",
-      answer:
-        "Umrah usually takes between 3 to 6 hours to complete, depending on the crowd and the individual’s pace. This includes performing Tawaf, Sa'i, and Taqsir or Halq.",
+      question: "How can I apply for an Umrah visa?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>You can apply through an authorized travel agent or online via Nusuk (Saudi Arabia's official Umrah platform).</li>
+            <li>Some nationalities can also perform Umrah on a Saudi tourist visa.</li>
+          </ul>
+        </>
+      ),
     },
     {
-      question: "What are the differences between Hajj and Umrah?",
-      answer:
-        "Hajj is an obligatory pilgrimage for Muslims who meet certain conditions and is performed only during specific dates in Dhul Hijjah. Umrah, on the other hand, is a voluntary pilgrimage that can be performed any time of the year and involves fewer rituals.",
+      question: "What documents are required for an Umrah visa?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>Valid passport (at least six months validity).</li>
+            <li>Recent passport-sized photographs with a white background.</li>
+            <li>Proof of accommodation and return ticket.</li>
+            <li>COVID-19 vaccination certificate (if required).</li>
+            <li>Meningitis vaccination certificate (for some travelers).</li>
+          </ul>
+        </>
+      ),
     },
     {
-      question: "What Are The Essential Items To Pack For Umrah?",
-      answer:
-        "Essential items include Ihram clothing for men, modest attire for women, comfortable footwear, personal hygiene products, a prayer mat, a small bag for carrying essentials, and copies of important documents like passport and visa.",
+      question: "How long does it take to process an Umrah visa?",
+      answer: "An Umrah visa is usually processed within 5–7 days.",
+    },
+    {
+      question: "What is the validity of an Umrah visa?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>Most Umrah visas are valid for 90 days, allowing a stay of up to 30 days.</li>
+            <li>Multiple-entry visas may be available for some nationalities.</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: "Can I perform Umrah on a tourist visa?",
+      answer: "Yes, some nationalities can perform Umrah on a Saudi tourist visa, but a separate Umrah visa is still required for others.",
+    },
+    {
+      question: "Can I extend my Umrah visa?",
+      answer: "No, Umrah visas cannot be extended beyond the allowed stay.",
+    },
+    {
+      question: "Can I travel to other cities on an Umrah visa?",
+      answer: "Yes, Umrah visa holders can now visit other Saudi cities, including Riyadh, Jeddah, and Madinah.",
+    },
+    {
+      question: "Are there age restrictions for Umrah visas?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>Children can perform Umrah but must be accompanied by a guardian.</li>
+            <li>There are no upper age limits, but elderly travelers may need medical clearance.</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: "Do I need travel insurance for an Umrah visa?",
+      answer: "Yes, travel insurance is mandatory for Umrah visa holders.",
     },
   ];
-
+  
   const umrahsteps = [
     {
       title: "1. Ihram",
@@ -80,7 +132,7 @@ const UmrahGuide = () => {
 
       <FAQSection
         title="Frequently Asked Questions"
-        faqs={umrahFAQs}
+        faqs={umrahVisaFAQs}
         inCol={true}
       />
     </div>

@@ -18,16 +18,16 @@ const Hero = () => {
       {/* Content */}
       <div className="flex md:w-[80%]  flex-col text-white md:mt-20 mt-10 text-center z-10 px-6 sm:px-8 md:px-10">
         <img
-          src="/newImage/herotext.png"
+          src="/newImage/heroheading.png"
           alt="image"
-          className="w-full max-w-[30rem] sm:max-w-[24rem] md:max-w-[30rem] lg:max-w-[36rem] mx-auto"
+          className="w-full max-w-[30rem] sm:max-w-[24rem] md:max-w-[40rem] lg:max-w-[46rem] mx-auto"
         />
-        <h1 className="uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-kufam text-[#CE9137] mt-4">
+        {/* <h1 className="uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-kufam text-[#CE9137] mt-4">
           Hajj <span className="text-white"> &</span> Umrah
         </h1>
         <p className="mt-2 font-poppins text-sm sm:text-base md:text-lg text-[#FFFFFF]">
           From Intentions to Completion – Your Ultimate Pilgrimage Partner
-        </p>
+        </p> */}
         <SearchBar />
       </div>
     </div>

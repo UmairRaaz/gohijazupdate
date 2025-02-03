@@ -6,6 +6,7 @@ import SectionLoader from "../sections/SectionLoader";
 import NopackageAvailable from "../components/NopackageAvailable";
 import NewHajjComponent from "../components/NewHajjComponent";
 import NewUmrahComponent from "../components/NewUmrahComponent";
+import NoRecordsFound from "../components/NoResultFound";
 
 const AllPackages = () => {
   const { packages, loading } = useContext(PackageContext);
@@ -30,24 +31,25 @@ const AllPackages = () => {
   return (
     <div className="max-w-6xl mt-20 mx-auto p-6">
       {/* First Section: Umrah and Hajj Packages */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-2">
         <h2 className="text-4xl text-[#454545] font-bold font-poppins">
           Our Best Umrah and Hajj Packages 2025
         </h2>
         <p className="text-xl text-[#454545] font-nunito mt-2">
-          Choose your package according to your needs, guaranteed cheap and complete
+          Choose your package according to your needs, guaranteed cheap and
+          complete
         </p>
       </div>
 
       {/* Umrah Packages */}
       <div className="mb-16">
-        <h3 className="text-3xl text-center font-bold text-[#4A4A4A] mb-6">
-          Special Umrah Packages 2025
-        </h3>
         {umrahPackages.length === 0 ? (
-          <NopackageAvailable text="No Umrah packages are available" />
+          <NoRecordsFound />
         ) : (
           <div className="grid grid-cols-1  gap-8 px-4 md:px-12">
+            <h3 className="text-3xl text-center font-bold text-[#4A4A4A] mb-6">
+              Special Umrah Packages 2025
+            </h3>
             {umrahPackages.map((pkg, index) => (
               <NewUmrahComponent pkg={pkg} key={index} />
             ))}
@@ -57,13 +59,13 @@ const AllPackages = () => {
 
       {/* Hajj Packages */}
       <div>
-        <h3 className="text-3xl text-center font-bold text-[#4A4A4A] mb-6">
-          Special Hajj Packages 2025
-        </h3>
         {hajjPackages.length === 0 ? (
-          <NopackageAvailable text="No Hajj packages are available" />
+           <NoRecordsFound />
         ) : (
           <div className="grid grid-cols-1 gap-4 gap-y-8 px-4 md:px-12">
+            <h3 className="text-3xl text-center font-bold text-[#4A4A4A] mb-6">
+              Special Hajj Packages 2025
+            </h3>
             {hajjPackages.map((pkg, index) => (
               <NewHajjComponent pkg={pkg} key={index} />
             ))}

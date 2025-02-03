@@ -28,10 +28,10 @@ const HajjUmrahGuide = () => {
   return (
     <div className="font-roboto ">
       {/* Hero Section */}
-      <div className="relative min-h-[70vh] md:min-h-screen py-20 md:pt-10 flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-[70vh] md:min-[80vh] py-20 md:pt-28 flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <img
-          src="/newImage/blogHeader.png"
+          src="/newImage/guideheader.jpeg"
           alt="Hajj and Umrah"
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -1,10 +1,10 @@
 import Slider from "react-slick";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div onClick={onClick} className={`arrow ${className}`}>
-      <FaAngleLeft class="arrows" style={{ color: "white" }} />
+      <FaArrowLeft class="arrows" style={{ color: "white" }} />
     </div>
   );
 };
@@ -13,7 +13,7 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div onClick={onClick} className={`arrow ${className}`}>
-      <FaAngleRight class="arrows" style={{ color: "white" }} />
+      <FaArrowRight class="arrows" style={{ color: "white" }} />
     </div>
   );
 }

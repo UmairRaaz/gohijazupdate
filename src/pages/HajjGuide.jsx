@@ -40,26 +40,74 @@ const HajjGuide = () => {
       icon: "/newIcons/guides/jamarat.png",
     },
   ];
-  const faqs = [
+  const hajjVisaFAQs = [
     {
-      question: "What Are The Conditions For Hajj To Be Mandatory?",
+      question: "What is a Hajj visa?",
       answer:
-        "Hajj becomes mandatory for a Muslim if they meet the following conditions: being an adult, mentally sound, physically and financially capable, and having safe access to perform the pilgrimage. It must be performed once in a lifetime if these conditions are met.",
+        "A Hajj visa is a special visa issued by Saudi Arabia for Muslims to perform the annual Hajj pilgrimage. It is only available during the Hajj season.",
     },
     {
-      question: "What Items Are Prohibited During Ihram?",
+      question: "When can I apply for a Hajj visa?",
       answer:
-        "While in the state of Ihram, certain items and actions are prohibited, including wearing stitched clothing (for men), using perfumes, cutting nails or hair, hunting animals, engaging in marital relations, and covering the head (for men) or face (for women).",
+        "Hajj visas are issued once a year, usually between Shawwal and Dhul-Qi’dah (Islamic months) before the Hajj period.",
     },
     {
-      question: "What Are The Differences Between Hajj Al-Ifrad, Tamattu, And Qiran?",
-      answer:
-        "Hajj Al-Ifrad involves performing only Hajj without Umrah. Hajj Al-Tamattu includes performing Umrah during the Hajj months, exiting Ihram, and then re-entering Ihram for Hajj. Hajj Al-Qiran combines both Umrah and Hajj in one Ihram without exiting between the two rituals.",
+      question: "How can I apply for a Hajj visa?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>You must apply through an authorized Hajj tour operator approved by the Saudi Ministry of Hajj and Umrah.</li>
+            <li>Applications are usually processed in coordination with the local Hajj authorities of your country.</li>
+          </ul>
+        </>
+      ),
     },
     {
-      question: "What Are The Essential Items To Pack For Hajj?",
+      question: "What documents are required for a Hajj visa?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>Valid passport (at least six months validity).</li>
+            <li>Recent passport-sized photographs with a white background.</li>
+            <li>Proof of confirmed Hajj package (flights, accommodation, transport).</li>
+            <li>A mahram (male guardian) for female travelers under 45 years.</li>
+            <li>COVID-19 and meningitis vaccination certificates (if required).</li>
+            <li>A non-refundable return ticket.</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: "How long does it take to process a Hajj visa?",
       answer:
-        "Essential items for Hajj include Ihram clothing, comfortable footwear, personal hygiene products (unscented), medications, a prayer mat, a water bottle, a small backpack, identification documents, and a guidebook for rituals. Staying organized ensures a smooth pilgrimage experience.",
+        "Hajj visas typically take a few weeks to process, depending on the country and tour operator.",
+    },
+    {
+      question: "What is the validity of a Hajj visa?",
+      answer: "A Hajj visa is only valid for the Hajj season and expires soon after Hajj ends.",
+    },
+    {
+      question: "Can I perform Hajj on a tourist or Umrah visa?",
+      answer: "No, Hajj can only be performed on a Hajj visa.",
+    },
+    {
+      question: "Can I extend my Hajj visa?",
+      answer: "No, Hajj visas cannot be extended. Pilgrims must leave Saudi Arabia by the designated date.",
+    },
+    {
+      question: "Are there age restrictions for Hajj visas?",
+      answer: (
+        <>
+          <ul className="list-disc pl-4">
+            <li>Children are allowed but must be accompanied by a guardian.</li>
+            <li>Elderly travelers may need a medical clearance.</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      question: "Do I need travel insurance for a Hajj visa?",
+      answer: "Yes, Saudi Arabia requires mandatory travel insurance for Hajj pilgrims.",
     },
   ];
   
@@ -87,7 +135,7 @@ const HajjGuide = () => {
         ))}
       </div>
 
-      <FAQSection title="Frequently Asked Questions" faqs={faqs} inCol={true}/>
+      <FAQSection title="Frequently Asked Questions" faqs={hajjVisaFAQs} inCol={true}/>
     </div>
   );
 };

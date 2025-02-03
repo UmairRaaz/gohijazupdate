@@ -5,6 +5,7 @@ import SectionLoader from "./SectionLoader";
 import NopackageAvailable from "../components/NopackageAvailable";
 import NewHajjComponent from "../components/NewHajjComponent";
 import NewUmrahComponent from "../components/NewUmrahComponent";
+import NoRecordsFound from "../components/NoResultFound";
 
 const SpecialPackages = () => {
   const { filteredPackages, loading, filterPackages, filters, setFilters } =
@@ -91,7 +92,7 @@ const SpecialPackages = () => {
                   ) : null
                 )
               ) : (
-                <NopackageAvailable />
+                <NoRecordsFound />
               )}
             </div>
           )}
