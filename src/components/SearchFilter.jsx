@@ -6,7 +6,7 @@ const SearchFilter = ({isListView, setisListView }) => {
   const [packageType, setPackageType] = useState("all");
   const [sortBy, setSortBy] = useState("default");
   
-
+console.log(isListView)
   return (
     <div className="w-full p-4 rounded-lg ">
       <div className="flex flex-col justify-between md:flex-row items-center gap-3">
@@ -24,13 +24,13 @@ const SearchFilter = ({isListView, setisListView }) => {
 
         <div className="flex gap-2 items-center h-10 w-full md:w-auto">
           <div
-            onClick={() => setisListView(!isListView)}
+            onClick={() => setisListView((prev) => !prev)}
             className="bg-white cursor-pointer p-2 rounded-lg border flex items-center justify-center w-full h-full"
           >
             <img src="/newIcons/grid.png" alt="icon" className="md:w-14" />
           </div>
           <div
-            onClick={() => setisListView(!isListView)}
+            onClick={() => setisListView((prev) => !prev)}
             className="bg-white cursor-pointer p-2 rounded-lg border flex items-center justify-center w-full h-full"
           >
             <img src="/newIcons/list.png" alt="icon" className="md:w-14" />

@@ -9,7 +9,7 @@ import NewUmrahComponent from "../components/NewUmrahComponent";
 const SpecialPackages = () => {
   const { filteredPackages, loading, filterPackages, filters, setFilters } =
     useContext(PackageContext);
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);

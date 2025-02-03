@@ -11,7 +11,7 @@ const TourOperators = () => {
     city: "Dubai, UAE",
     image: "/newImage/blogImageOne.png",
   }));
-  console.log(tourOperators);
+ 
   return (
     <div className="bg-[#f9fafc] font-roboto min-h-screen">
       <div className="max-w-6xl  mx-auto mt-20 py-10 px-4">
@@ -32,7 +32,7 @@ const TourOperators = () => {
             {tourOperators.map((tourguide, index) => (
               <div
                 key={index}
-                onClick={navigate(`/tour-operator/${tourguide.id}`)}
+                onClick={() => navigate(`/tour-operator/${tourguide.id}`)}
                 className="bg-white border p-4 items-center gap-x-4 flex flex-col md:flex-row shadow-lg rounded-lg overflow-hidden text-center"
               >
                 {/* Agency Image */}
@@ -92,7 +92,7 @@ const TourOperators = () => {
                 {/* View Profile Button */}
                 <div className="px-8">
                   <button
-                    className="mt-3 px-4 py-2 w-full bg-[#CE9137] text-white  transition duration-300"
+                    className="mt-3 px-4 py-2 w-full rounded-lg bg-[#CE9137] text-white  transition duration-300"
                     onClick={() => navigate(`/tour-operator/${tourguide.id}`)}
                   >
                     View Profile

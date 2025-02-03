@@ -8,7 +8,7 @@ const NewHajjComponent = ({ pkg }) => {
   return (
     <div
       onClick={() => navigate(`/hajj-package-detail/${pkg._id}`)}
-      className="cursor-pointer bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl "
+      className="cursor-pointer my-[48px] bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl "
     >
       {/* Image Section */}
       <div className="w-full md:w-1/3 h-64 md:h-[24rem] flex items-center justify-center">
@@ -22,21 +22,22 @@ const NewHajjComponent = ({ pkg }) => {
       {/* Content Section */}
       <div className="w-full md:w-2/3 p-4 flex flex-col justify-between">
         {/* Title and Price */}
-        <div className="flex flex-col md:flex-row justify-between items-start">
-          <div className="max-w-[22rem]">
-            <h1 className="text-2xl md:text-3xl font-bold">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-4">
+          <div className="max-w-full md:max-w-[30rem]  break-words">
+            <h1 className="text-2xl  md:text-3xl font-bold">
               {capitalizeEachWord(pkg.package_title)}
             </h1>
-            <h1 className="mt-2 text-lg md:text-lg md:text-nowrap font-bold">
+            <h1 className="mt-2 text-lg font-bold">
               By:{" "}
               <span className="text-[#ED8D02] ">
                 {capitalizeEachWord(pkg.agency_name || "Unknown Agency")}
               </span>
             </h1>
           </div>
-          <h1 className="text-gray-400 text-xl  font-bold text-nowrap ">
+
+          <h1 className="text-gray-400 text-2xl  md:text-3xl font-bold whitespace-nowrap">
             RS{" "}
-            <span className="text-[#ED8D02] font-semibold ml-2">
+            <span className="text-[#ED8D02] font-bold">
               {formatPriceWithCommas(
                 pkg?.pricing?.[0]?.first_price?.price || 0
               )}{" "}
@@ -57,21 +58,21 @@ const NewHajjComponent = ({ pkg }) => {
           </div>
 
           {/* Services Section */}
-          <div className="w-full md:flex-1 mt-4 md:mr-3 md:mt-0 border border-gray-300 py-2 px-3 rounded-lg">
-            <h3 className="text-lg md:text-xl text-center md:text-left font-bold mb-2">
+          <div className="md:min-w-20  w-auto mt-4 md:mr-3 md:mt-0 border border-gray-300 py-2 px-3 rounded-lg">
+            <h3 className="text-lg md:text-xl text-center md:text-left font-bold">
               Services
             </h3>
 
-            <div className="flex flex-col  md:flex-row items-center md:items-stretch gap-4">
+            <div className="flex  flex-col md:justify-between md:flex-row items-center md:items-center gap-4">
               {/* Mina Category & Zone */}
-              <div className="flex w-full md:w-auto justify-center md:justify-start gap-x-6 border-b md:border-b-0 md:border-r border-gray-300 pb-3 md:pb-0">
-                <div className="flex flex-col items-center">
+              <div className="flex w-full md:w-auto justify-center md:justify-start gap-x-3 border-b md:border-b-0 md:border-r border-gray-300 pb-3 md:pb-0">
+                <div className="flex flex-col items-center ">
                   <h1 className="text-3xl font-semibold">D</h1>
                   <h4 className="text-sm text-center text-[#AAAAAA]">
                     Mina Category
                   </h4>
                 </div>
-                <div className="flex flex-col items-center pr-4">
+                <div className="flex flex-col  items-center pr-4">
                   <h1 className="text-3xl font-semibold">5</h1>
                   <h4 className="text-sm text-center text-[#AAAAAA]">
                     Mina Zone
@@ -80,7 +81,7 @@ const NewHajjComponent = ({ pkg }) => {
               </div>
 
               {/* Other Services */}
-              <div className="grid grid-cols-4 md:flex md:justify-between w-full gap-4">
+              <div className="grid grid-cols-4 md:flex md:justify-normal gap-x-4">
                 {[
                   { src: "/newIcons/hajj-icon/qurbani.png", label: "Qurbani" },
                   { src: "/newIcons/hajj-icon/meals.png", label: "Meals" },
@@ -94,7 +95,7 @@ const NewHajjComponent = ({ pkg }) => {
                     key={index}
                     className="flex flex-col items-center gap-y-4 pt-3"
                   >
-                    <img src={service.src} alt={service.label} className="" />
+                    <img src={service.src} alt={service.label} />
                     <h4 className="text-sm text-[#AAAAAA]">{service.label}</h4>
                   </div>
                 ))}

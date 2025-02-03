@@ -76,116 +76,145 @@ const Pricing = ({ price, packageUmrah, contactDetails, duration }) => {
       ))}
 
       {/* Contact Button */}
-      <div>
-        <button
-          ref={buttonRef} // Added ref to the button
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="text-lg bg-[#C38934] w-full text-center text-white p-2 rounded-xl mt-4"
+      <div className="md:hidden mt-4 flex flex-col gap-y-2 px-4">
+        <a
+          href={`https://api.whatsapp.com/send?phone=${whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center h-12 text-xl gap-4 px-4 py-2 bg-[#0B840B] text-white rounded-lg shadow-md w-full transition"
         >
-          Contact Agency
-        </button>
+          <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-6" />
+          <span>WhatsApp</span>
+        </a>
+        <a
+          href={`tel:${phone}`}
+          className="flex items-center justify-center gap-4 px-4 py-2 bg-[#0C0B0B] text-white rounded-lg shadow-md h-12 text-xl w-full transition"
+        >
+          <img src="/icons/phone.png" alt="Phone" className="w-6" />
+          <span>Call Now</span>
+        </a>
+        <a
+          href={`https://mail.google.com/mail/?view=cm&to=${email}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center h-12 text-xl gap-4 px-4 py-2 bg-[#ED8D02] text-white rounded-lg shadow-md w-full transition"
+        >
+          <img src="/icons/email.png" alt="Gmail" className="w-6" />
+          <span>Email</span>
+        </a>
       </div>
+      <div className="hidden md:block">
+        <div>
+          <button
+            ref={buttonRef} // Added ref to the button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="text-lg bg-[#C38934] w-full text-center text-white p-2 rounded-xl mt-4"
+          >
+            Contact Agency
+          </button>
+        </div>
 
-      {/* Dropdown Section */}
-      {isDropdownOpen && (
-        <div
-          ref={dropdownRef} // Added ref to the dropdown
-          className="mt-2 p-4 border-t border-gray-300 rounded-lg shadow-md space-y-3"
-        >
-          <div className="flex items-center justify-between">
-            <h1>Agency Contact Details</h1>
-            <div className="flex justify-end">
-              <button
-                onClick={() => setIsDropdownOpen(false)}
-                className="text-sm text-gray-600 hover:text-gray-800"
-              >
-                <img src="/newIcons/filter-close.png" alt="close" />
-              </button>
+        {/* Dropdown Section */}
+        {isDropdownOpen && (
+          <div
+            ref={dropdownRef} // Added ref to the dropdown
+            className="mt-2 p-4 border-t border-gray-300 rounded-lg shadow-md space-y-3"
+          >
+            <div className="flex items-center justify-between">
+              <h1>Agency Contact Details</h1>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="text-sm text-gray-600 hover:text-gray-800"
+                >
+                  <img src="/newIcons/filter-close.png" alt="close" />
+                </button>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <img
+                src="/newIcons/pricing-whatsapp.png"
+                alt="WhatsApp"
+                className="w-4"
+              />
+              <span className="text-sm text-gray-600">
+                {whatsapp ? (
+                  <a
+                    href={`https://wa.me/${whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {whatsapp}
+                  </a>
+                ) : (
+                  "N/A"
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img
+                src="/newIcons/pricing-phone.png"
+                alt="phone"
+                className="w-4"
+              />
+              <span className="text-sm text-gray-600">
+                {phone ? (
+                  <a
+                    href={`tel:${phone}`}
+                    target="_blank"
+                    className="block  hover:underline"
+                  >
+                    {phone}
+                  </a>
+                ) : (
+                  "N/A"
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img
+                src="/newIcons/pricing-email.png"
+                alt="email"
+                className="w-4"
+              />
+              <span className="text-sm text-gray-600">
+                {email ? (
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&to=${email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:underline"
+                  >
+                    {email}
+                  </a>
+                ) : (
+                  "N/A"
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img src="/newIcons/pricing-map.png" alt="map" className="w-4" />
+              <span className="text-sm text-gray-600">
+                {address ? (
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      address
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=" hover:underline"
+                  >
+                    {address}
+                  </a>
+                ) : (
+                  "N/A"
+                )}
+              </span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <img
-              src="/newIcons/pricing-whatsapp.png"
-              alt="WhatsApp"
-              className="w-4"
-            />
-            <span className="text-sm text-gray-600">
-              {whatsapp ? (
-                <a
-                  href={`https://wa.me/${whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  {whatsapp}
-                </a>
-              ) : (
-                "N/A"
-              )}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <img
-              src="/newIcons/pricing-phone.png"
-              alt="phone"
-              className="w-4"
-            />
-            <span className="text-sm text-gray-600">
-              {phone ? (
-                <a
-                  href={`tel:${phone}`}
-                  target="_blank"
-                  className="block  hover:underline"
-                >
-                  {phone}
-                </a>
-              ) : (
-                "N/A"
-              )}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <img
-              src="/newIcons/pricing-email.png"
-              alt="email"
-              className="w-4"
-            />
-            <span className="text-sm text-gray-600">
-              {email ? (
-                <a
-                  href={`https://mail.google.com/mail/?view=cm&to=${email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:underline"
-                >
-                  {email}
-                </a>
-              ) : (
-                "N/A"
-              )}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <img src="/newIcons/pricing-map.png" alt="map" className="w-4" />
-            <span className="text-sm text-gray-600">
-              {address ? (
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    address
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className=" hover:underline"
-                >
-                  {address}
-                </a>
-              ) : (
-                "N/A"
-              )}
-            </span>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

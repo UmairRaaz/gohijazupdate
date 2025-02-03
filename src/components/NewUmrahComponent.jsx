@@ -6,12 +6,9 @@ const NewUmrahComponent = ({ pkg }) => {
   const navigate = useNavigate();
   return (
     <div
-    onClick={() => navigate(`/umrah-package-detail/${pkg._id}`)}
-  className="cursor-pointer bg-white my-8 flex flex-col md:flex-row rounded-xl"
-  style={{
-    boxShadow: "12px 12px 20px -5px rgba(239, 239, 239, 1), -12px 12px 20px -5px rgba(239, 239, 239, 1), -12px -12px 20px -5px rgba(239, 239, 239, 1), 12px -12px 20px -5px rgba(239, 239, 239, 1)"
-  }}
->
+      onClick={() => navigate(`/umrah-package-detail/${pkg._id}`)}
+      className="cursor-pointer  my-[48px] shadow-xl bg-white flex flex-col md:flex-row rounded-xl"
+    >
       {/* Image Section */}
       <div className="w-full md:w-1/3 h-64 md:h-[22rem]">
         <img
@@ -24,21 +21,22 @@ const NewUmrahComponent = ({ pkg }) => {
       {/* Content Section */}
       <div className="w-full md:w-2/3 p-4 flex flex-col justify-between">
         {/* Title and Price */}
-        <div className="flex flex-col md:flex-row justify-between items-start">
-          <div className="max-w-[22rem]">
+        <div className="flex flex-col md:flex-row justify-between items-start  gap-4">
+          <div className="max-w-full md:max-w-[30rem] break-words">
             <h1 className="text-2xl md:text-3xl font-bold">
               {capitalizeEachWord(pkg.package_title)}
             </h1>
-            <h1 className="mt-2 md:text-nowrap text-lg md:text-lg font-bold">
+            <h1 className="mt-2 text-lg font-bold">
               By:{" "}
               <span className="text-[#ED8D02]">
                 {capitalizeEachWord(pkg.agency_name || "Unknown Agency")}
               </span>
             </h1>
           </div>
-          <h1 className="text-gray-400 text-xl  font-bold  ">
+
+          <h1 className="text-gray-400 text-2xl md:text-3xl font-bold whitespace-nowrap">
             RS{" "}
-            <span className="text-[#ED8D02] font-semibold">
+            <span className="text-[#ED8D02] font-bold">
               {formatPriceWithCommas(
                 pkg?.pricing?.[0]?.first_price?.price || 0
               )}{" "}
@@ -53,20 +51,22 @@ const NewUmrahComponent = ({ pkg }) => {
             <h3 className="text-xl md:text-xl text-nowrap font-bold">
               <span className="text-4xl inline-block">{21}</span> Days
             </h3>
-            <p className="text-lg text-nowrap font-semibold text-black">Umrah Package</p>
+            <p className="text-lg text-nowrap font-semibold text-black">
+              Umrah Package
+            </p>
           </div>
 
           {/* Services Section */}
-          <div className="w-full md:flex-1 mt-4 md:mr-3 md:mt-0 border border-gray-300 py-2 px-3 rounded-lg">
+          <div className="w-full md:w-auto mt-4 md:mr-3 md:mt-0 border border-gray-300 py-2 px-3 rounded-lg">
             <h3 className="text-lg md:text-xl text-center md:text-left font-bold mb-2">
               Services
             </h3>
 
-            <div className="md:flex  md:flex-row items-center md:items-stretch gap-4">
+            <div className="md:flex md:flex-row items-center md:items-stretch gap-4">
               {/* Mina Category & Zone */}
 
               {/* Other Services */}
-              <div className="grid grid-cols-4 md:flex  md:justify-between w-full gap-x-3">
+              <div className="grid grid-cols-4 md:flex  md:justify-end w-full gap-x-4">
                 {[
                   {
                     src: "/newIcons/hajj-icon/air-tickets.png",
@@ -87,11 +87,7 @@ const NewUmrahComponent = ({ pkg }) => {
                     className="flex flex-col items-center gap-y-2 pt-3 md:items-center"
                   >
                     <div className="h-[80%]">
-                    <img
-                      src={service.src}
-                      alt={service.label}
-                      className=""
-                    />
+                      <img src={service.src} alt={service.label} className="" />
                     </div>
                     <h4 className="text-sm text-nowrap  text-[#AAAAAA]">
                       {service.label}
@@ -108,17 +104,27 @@ const NewUmrahComponent = ({ pkg }) => {
           {/* Hotels */}
           <div className="flex gap-x-4 items-center">
             {[
-              { src: "/newImage/makkah.png", label: "Hotel In Makkah", distance : 200 },
-              { src: "/newImage/medinah.png", label: "Hotel In Madinah", distance : 200 },
+              {
+                src: "/newImage/makkah.png",
+                label: "Hotel In Makkah",
+                distance: 200,
+              },
+              {
+                src: "/newImage/medinah.png",
+                label: "Hotel In Madinah",
+                distance: 200,
+              },
             ].map((hotel, index) => (
               <div key={index} className="flex gap-x-4 items-center">
                 <img src={hotel.src} width={50} alt={hotel.label} />
-               <div>
-               <h1 className="text-[#AAAAAA] text-xs md:text-base">
-                  {hotel.label}
-                </h1>
-                <p className="font-semibold text-xs">( {hotel.distance} Meters )</p>
-               </div>
+                <div>
+                  <h1 className="text-[#AAAAAA] text-xs md:text-base">
+                    {hotel.label}
+                  </h1>
+                  <p className="font-semibold text-xs">
+                    ( {hotel.distance} Meters )
+                  </p>
+                </div>
               </div>
             ))}
           </div>
