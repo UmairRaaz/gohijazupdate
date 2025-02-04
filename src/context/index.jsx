@@ -58,7 +58,6 @@ export const PackageProvider = ({ children }) => {
   // Filter function for Hajj packages
   const filterHajjPackages = (packages, filters) => {
     let filtered = [...packages];
-    console.log("hajj filtered", filtered);
     // Filter by distance (Madinah and Makkah)
     if (
       filters.distanceFromHotel &&
@@ -149,16 +148,12 @@ export const PackageProvider = ({ children }) => {
         return false;
       });
     }
-    console.log("filters.province", filters.province);
-    // Filter by province
+
     // Filter by province
     if (filters.province && filters.province.toLowerCase() !== "all") {
       filtered = filtered.filter((pkg) => {
         const provinceFromPkg = pkg.province?.toLowerCase().trim(); // Trim for extra spaces
         const filterProvince = filters.province.toLowerCase().trim();
-
-        console.log("Comparing:", provinceFromPkg, "with", filterProvince); // Debug log
-
         return provinceFromPkg === filterProvince;
       });
     }
@@ -170,7 +165,7 @@ export const PackageProvider = ({ children }) => {
       });
     }
 
-    console.log("Filtered packages after all filters:", filtered);
+    console.log("Filtered packages in hajj after all filters:", filtered);
 
     return filtered;
   };
@@ -295,14 +290,12 @@ export const PackageProvider = ({ children }) => {
       });
     }
 
-    console.log("Filtered packages:", filtered);
     return filtered;
   };
 
   // Main filter function
   const filterPackages = () => {
     let filtered = [...packages];
-    console.log("Filters Applied:", filters);
 
     // If no filters are applied, return the full dataset
     if (
@@ -326,11 +319,9 @@ export const PackageProvider = ({ children }) => {
     const umrahPackages = filtered.filter((pkg) =>
       pkg.package_header?.toLowerCase().includes("umrah")
     );
-
     const hajjPackages = filtered.filter((pkg) =>
       pkg.package_header?.toLowerCase().includes("hajj")
     );
-
     // Apply filters separately to both Hajj and Umrah packages
     const filteredUmrahPackages = filterUmrahPackages(umrahPackages, filters);
     const filteredHajjPackages = filterHajjPackages(hajjPackages, filters);
@@ -341,6 +332,68 @@ export const PackageProvider = ({ children }) => {
     console.log("Final Filtered Packages:", filtered);
     setFilteredPackages(filtered);
   };
+
+  const searchFilter = (appliedFilters) => {
+    let filtered = [...packages];
+    const filters = appliedFilters || {};  // Use passed filters or fallback
+  
+    console.log(filtered);
+    console.log(filters);
+  
+    if (
+      (!filters.departureLocation || filters.departureLocation === "all") &&
+      (!filters.packageType || filters.packageType === "all") &&
+      (!filters.duration || filters.duration === "all")
+    ) {
+      setFilteredPackages(filtered);
+      return;
+    }
+  
+    // Apply filters as before
+    if (filters.departureLocation && filters.departureLocation !== "all") {
+      filtered = filtered.filter((pkg) => {
+        const locationFromPkg = pkg.departure_from?.toLowerCase();
+        const locationFromFlight = pkg.departure_flight?.departure_location?.toLowerCase();
+        const filterLocation = filters.departureLocation.toLowerCase();
+        return (
+          locationFromPkg === filterLocation ||
+          locationFromFlight === filterLocation
+        );
+      });
+    }
+  
+    if (filters.packageType && filters.packageType !== "all") {
+      filtered = filtered.filter((pkg) => {
+        const packageType = pkg?.package_header?.split(" ")[0]?.toLowerCase();
+        return packageType === filters.packageType.toLowerCase();
+      });
+  
+      if (
+        filters.packageType.toLowerCase() === "hajj" &&
+        filters.duration &&
+        filters.duration !== "all"
+      ) {
+        filtered = filtered.filter(
+          (pkg) =>
+            pkg.duration.split(" ")[0].toLowerCase() ===
+            filters.duration.toLowerCase()
+        );
+      }
+  
+      if (
+        filters.packageType.toLowerCase() === "umrah" &&
+        filters.duration &&
+        filters.duration !== "all"
+      ) {
+        filtered = filtered.filter((pkg) => pkg.duration === filters.duration);
+      }
+    }
+  
+    console.log("After filtered", filtered);
+    setFilteredPackages(filtered);
+  };
+  
+  
 
   useEffect(() => {
     fetchAllPackages();
@@ -357,6 +410,7 @@ export const PackageProvider = ({ children }) => {
         filterPackages,
         filters,
         setFilters,
+        searchFilter,
       }}
     >
       {children}
