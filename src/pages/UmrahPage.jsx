@@ -115,7 +115,20 @@ const UmrahPage = () => {
       </div>
 
       <QuickOverview />
-      <PackageDetailServices />
+      <PackageDetailServices
+        services={{
+          category: packageDetails.category,
+          zone: packageDetails.zone,
+          departure: packageDetails.departure_from,
+          duration: packageDetails.duration,
+          food_included: !!packageDetails.food_included, 
+          accomodation_included:
+            Array.isArray(packageDetails.accomodation_details) &&
+            packageDetails.accomodation_details.length > 0,
+          ziyarat_included: packageDetails.ziayarat_included || false, 
+          qurbani_included: packageDetails.qurbani_included || false, 
+        }}
+      />
       <FlightDetails />
 
       {/* Full-Screen Modal */}

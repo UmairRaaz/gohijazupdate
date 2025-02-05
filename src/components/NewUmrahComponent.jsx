@@ -49,7 +49,7 @@ const NewUmrahComponent = ({ pkg }) => {
         <div className="flex flex-col md:gap-x-2 md:flex-row justify-center md:justify-between items-center mt-4 md:mt-0 ">
           <div className="w-full text-center md:w-[30%] md:text-left">
             <h3 className="text-xl md:text-xl text-nowrap font-bold">
-              <span className="text-4xl inline-block">{21}</span> Days
+              <span className="text-4xl inline-block">{pkg?.duration}</span> Days
             </h3>
             <p className="text-lg text-nowrap font-semibold text-black">
               Umrah Package
@@ -107,12 +107,12 @@ const NewUmrahComponent = ({ pkg }) => {
               {
                 src: "/newImage/makkah.png",
                 label: "Hotel In Makkah",
-                distance: 200,
+                distance: pkg?.distance_from_makkah_hotel || "0",
               },
               {
                 src: "/newImage/medinah.png",
                 label: "Hotel In Madinah",
-                distance: 200,
+                distance: pkg?.distance_from_madina_hotel || "0",
               },
             ].map((hotel, index) => (
               <div key={index} className="flex gap-x-4 items-center">

@@ -4,11 +4,8 @@ import { formatPriceWithCommas } from "../utils/formatPrice";
 
 const NewHajjComponent = ({ pkg }) => {
   const navigate = useNavigate();
-
   return (
-    <div
-      className=" my-[48px] bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl "
-    >
+    <div className=" my-[48px] bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl ">
       {/* Image Section */}
       <div className="w-full md:w-1/3 h-64 md:h-[24rem] flex items-center justify-center">
         <img
@@ -52,7 +49,9 @@ const NewHajjComponent = ({ pkg }) => {
               Hajj Package
             </h3>
             <p className="text-lg font-semibold text-black">
-              {pkg?.duration === "short" ? "Short Duration" : "Long Duration"}
+              {pkg?.duration.toLowerCase().includes("short")
+                ? "Short Duration"
+                : "Long Duration"}
             </p>
           </div>
 
@@ -66,13 +65,13 @@ const NewHajjComponent = ({ pkg }) => {
               {/* Mina Category & Zone */}
               <div className="flex w-full md:w-auto justify-center md:justify-start gap-x-3 border-b md:border-b-0 md:border-r border-gray-300 pb-3 md:pb-0">
                 <div className="flex flex-col items-center ">
-                  <h1 className="text-3xl font-semibold">D</h1>
+                  <h1 className="text-3xl font-semibold mb-1">{pkg?.category}</h1>
                   <h4 className="text-sm text-center text-[#AAAAAA]">
                     Mina Category
                   </h4>
                 </div>
                 <div className="flex flex-col  items-center pr-4">
-                  <h1 className="text-3xl font-semibold">5</h1>
+                  <h1 className="text-3xl font-semibold mb-1">{pkg?.zone}</h1>
                   <h4 className="text-sm text-center text-[#AAAAAA]">
                     Mina Zone
                   </h4>
@@ -92,9 +91,11 @@ const NewHajjComponent = ({ pkg }) => {
                 ].map((service, index) => (
                   <div
                     key={index}
-                    className="flex flex-col items-center gap-y-4 pt-3"
+                    className="flex flex-col items-center pt-3 "
                   >
-                    <img src={service.src} alt={service.label} />
+                    <div className="flex-grow flex items-center justify-center">
+                      <img src={service.src} alt={service.label} className="mb-2" />
+                    </div>
                     <h4 className="text-sm text-[#AAAAAA]">{service.label}</h4>
                   </div>
                 ))}
@@ -122,8 +123,9 @@ const NewHajjComponent = ({ pkg }) => {
 
           {/* View Details Button */}
           <button
-          onClick={() => navigate(`/hajj-package-detail/${pkg._id}`)}
-          className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0">
+            onClick={() => navigate(`/hajj-package-detail/${pkg._id}`)}
+            className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0"
+          >
             View Details
           </button>
         </div>

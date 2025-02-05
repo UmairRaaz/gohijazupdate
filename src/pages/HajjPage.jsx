@@ -42,7 +42,14 @@ const HajjPage = () => {
       </div>
     );
   }
-
+  console.log(packageDetails.duration);
+  console.log(packageDetails.departure_from);
+  console.log(packageDetails.zone);
+  console.log(packageDetails.category);
+  console.log(packageDetails.ziayarat_included);
+  console.log(packageDetails.food_included);
+  console.log(packageDetails.accomodation_details);
+  console.log(packageDetails.qurbani_included);
   return (
     <div className="py-20 px-2 bg-[#f9fafc] md:px-4 min-h-screen">
       <div className="w-full flex flex-col md:flex-row md:max-w-7xl mx-auto">
@@ -84,7 +91,9 @@ const HajjPage = () => {
                   )}
                 </span>
               </h1>
-              <p className="mt-4 text-sm">{packageDetails?.package_description}</p>
+              <p className="mt-4 text-sm">
+                {packageDetails?.package_description}
+              </p>
             </div>
           </div>
         </div>
@@ -104,7 +113,20 @@ const HajjPage = () => {
         </div>
       </div>
 
-      <PackageDetailServices />
+      <PackageDetailServices
+        services={{
+          category: packageDetails.category,
+          zone: packageDetails.zone,
+          departure: packageDetails.departure_from,
+          duration: packageDetails.duration,
+          food_included: !!packageDetails.food_included, 
+          accomodation_included:
+            Array.isArray(packageDetails.accomodation_details) &&
+            packageDetails.accomodation_details.length > 0,
+          ziyarat_included: packageDetails.ziayarat_included || false, 
+          qurbani_included: packageDetails.qurbani_included || false, 
+        }}
+      />
 
       {/* Full-Screen Modal */}
       {isModalOpen && (
