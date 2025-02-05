@@ -6,6 +6,7 @@ import FilterPrice from "./FilterPrice";
 import FilterAirlines from "./FilterAirlines";
 import { PackageContext } from "../../context/PackageContext";
 import CityAndProvince from "./CityAndProvince";
+import AmenitiesFilter from "./AmenitiesFilter";
 
 const FilterComponent = () => {
   const { filters, setFilters, filterPackages } = useContext(PackageContext);
@@ -23,6 +24,7 @@ const FilterComponent = () => {
       departureLocation: "all",
       distanceFromHotel: { min: 100, max: 5000 },
       roomType: [],
+      amenities: [],
       packageType: "all",
       duration: "all",
       priceOrder: "lowToHigh",
@@ -62,6 +64,7 @@ const FilterComponent = () => {
         <FilterAirlines filters={filters} setFilters={setFilters} />
         <CityAndProvince filters={filters} setFilters={setFilters} />
         <RoomType filters={filters} setFilters={setFilters} />
+        <AmenitiesFilter filters={filters} setFilters={setFilters} />
       </div>
     </>
   );

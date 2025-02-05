@@ -98,6 +98,7 @@ const RoomType = ({ filters, setFilters }) => {
           </div>
         </div>
       </div>
+      <div className="w-[90%] mt-4 mx-auto h-[1px] bg-gray-200"></div>
     </div>
   );
 };

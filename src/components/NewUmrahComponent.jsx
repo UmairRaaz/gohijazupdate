@@ -6,7 +6,7 @@ const NewUmrahComponent = ({ pkg }) => {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/umrah-package-detail/${pkg._id}`)}
+     
       className="cursor-pointer  my-[48px] shadow-xl bg-white flex flex-col md:flex-row rounded-xl"
     >
       {/* Image Section */}
@@ -130,7 +130,9 @@ const NewUmrahComponent = ({ pkg }) => {
           </div>
 
           {/* View Details Button */}
-          <button className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0">
+          <button
+           onClick={() => navigate(`/umrah-package-detail/${pkg._id}`)}
+          className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0">
             View Details
           </button>
         </div>

@@ -7,8 +7,7 @@ const NewHajjComponent = ({ pkg }) => {
 
   return (
     <div
-      onClick={() => navigate(`/hajj-package-detail/${pkg._id}`)}
-      className="cursor-pointer my-[48px] bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl "
+      className=" my-[48px] bg-white mt-4 flex flex-col md:flex-row  rounded-xl shadow-xl "
     >
       {/* Image Section */}
       <div className="w-full md:w-1/3 h-64 md:h-[24rem] flex items-center justify-center">
@@ -105,9 +104,9 @@ const NewHajjComponent = ({ pkg }) => {
         </div>
 
         {/* Hotels & View Details Button */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-6 md:mt-0">
+        <div className="flex flex-col md:flex-row justify-end items-center mt-6 md:mt-0">
           {/* Hotels */}
-          <div className="flex gap-x-4 items-center">
+          {/* <div className="flex gap-x-4 items-center">
             {[
               { src: "/newImage/makkah.png", label: "Hotel In Makkah" },
               { src: "/newImage/medinah.png", label: "Hotel In Madinah" },
@@ -119,10 +118,12 @@ const NewHajjComponent = ({ pkg }) => {
                 </h1>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* View Details Button */}
-          <button className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0">
+          <button
+          onClick={() => navigate(`/hajj-package-detail/${pkg._id}`)}
+          className="bg-[#CE9137] w-full md:w-56 text-white rounded-lg px-6 py-3 text-lg font-semibold mt-4 md:mt-0">
             View Details
           </button>
         </div>

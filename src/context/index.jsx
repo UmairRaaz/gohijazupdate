@@ -12,6 +12,7 @@ export const PackageProvider = ({ children }) => {
     departureLocation: "all",
     distanceFromHotel: { min: 100, max: 5000 },
     roomType: [],
+    amenities: [],
     packageType: "all",
     duration: "all",
     priceOrder: "lowToHigh",
@@ -165,6 +166,20 @@ export const PackageProvider = ({ children }) => {
       });
     }
 
+    if (filters.amenities && filters.amenities.length > 0) {
+      filtered = filtered.filter((pkg) => {
+        return filters.amenities.some((amenity) => {
+          if (amenity === "Ziyarat") {
+            return pkg.ziayarat_included === true;
+          } else if (amenity === "Transport") {
+            return pkg.transport && pkg.transport !== "none";
+          } else if (amenity === "Qurbani") {
+            return pkg.qurbani_included === true;
+          }
+          return false;
+        });
+      });
+    }
     console.log("Filtered packages in hajj after all filters:", filtered);
 
     return filtered;
@@ -290,13 +305,27 @@ export const PackageProvider = ({ children }) => {
       });
     }
 
+    if (filters.amenities && filters.amenities.length > 0) {
+      filtered = filtered.filter((pkg) => {
+        return filters.amenities.some((amenity) => {
+          if (amenity === "Ziyarat") {
+            return pkg.ziayarat_included === true;
+          } else if (amenity === "Transport") {
+            return pkg.transport && pkg.transport !== "none";
+          } else if (amenity === "Qurbani") {
+            return pkg.qurbani_included === true;
+          }
+          return false;
+        });
+      });
+    }
     return filtered;
   };
 
   // Main filter function
   const filterPackages = () => {
     let filtered = [...packages];
-
+    console.log(filters)
     // If no filters are applied, return the full dataset
     if (
       (!filters.packageType || filters.packageType === "all") &&
@@ -306,6 +335,7 @@ export const PackageProvider = ({ children }) => {
       (!filters.province || filters.province === "") &&
       (!filters.district || filters.district === "") &&
       (!filters.roomType || filters.roomType.length === 0) &&
+      (!filters.amenities || filters.amenities.length === 0) &&
       ((!filters.distanceFromHotel.min && !filters.distanceFromHotel.max) ||
         (filters.distanceFromHotel.min === 100 &&
           filters.distanceFromHotel.max === 5000)) &&

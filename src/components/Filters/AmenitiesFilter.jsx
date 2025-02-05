@@ -1,26 +1,23 @@
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
-const AmenitiesFilter = ({ onFilterChange }) => {
-  const [amenities, setAmenities] = useState([]); // State to track selected amenities
-  const [isOpen, setIsOpen] = useState(false); // State to toggle the dropdown visibility
+const AmenitiesFilter = ({ filters, setFilters  }) => {
+  const [amenities, setAmenities] = useState(filters.amenities || []);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleAmenitiesChange = (e) => {
     const value = e.target.value;
 
-    // Update selected amenities
     const updatedAmenities = amenities.includes(value)
       ? amenities.filter((item) => item !== value)
       : [...amenities, value];
 
     setAmenities(updatedAmenities);
-
-    // Notify parent component of the changes
-    onFilterChange({ type: "amenities", value: updatedAmenities });
+    setFilters((prev) => ({ ...prev, amenities: updatedAmenities })); // Maintain other filters
   };
 
   const toggleAmenitiesVisibility = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -37,13 +34,13 @@ const AmenitiesFilter = ({ onFilterChange }) => {
 
         {/* Dropdown list */}
         <div
-          className={`overflow-y-auto mt-2 transition-all duration-300 ease-out ${
+          className={`overflow-y-auto  transition-all duration-300 ease-out ${
             isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
           }`}
           style={{ scrollbarWidth: "thin", scrollbarColor: "#888 #e0e0e0" }}
         >
           <div className="flex flex-col px-6 gap-2 p-2">
-            {["Ziyarat Tour", "Dedicated Guide", "Group Tour", "Transport", "Accessibility"].map((amenity) => (
+            {["Ziyarat",  "Transport", "Qurbani"].map((amenity) => (
               <label key={amenity} className="flex items-center">
                 <input
                   type="checkbox"
@@ -58,7 +55,7 @@ const AmenitiesFilter = ({ onFilterChange }) => {
           </div>
         </div>
       </div>
-      <div className="w-[90%] mx-auto h-[1px] bg-gray-200"></div>
+      
     </div>
   );
 };
