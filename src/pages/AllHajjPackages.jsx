@@ -4,6 +4,7 @@ import { PackageContext } from "../context/PackageContext";
 import NopackageAvailable from "../components/NopackageAvailable";
 import SectionLoader from "../sections/SectionLoader";
 import NewHajjComponent from "../components/NewHajjComponent";
+import NoRecordsFound from "../components/NoResultFound";
 
 const AllHajjPackages = () => {
   const { packages, loading } = useContext(PackageContext);
@@ -19,7 +20,8 @@ const AllHajjPackages = () => {
   if (!hajjPackages || hajjPackages.length === 0) {
     return (
       <div className="mt-20">
-        <NopackageAvailable text="No Hajj packages are available" />
+        {/* <NopackageAvailable text="No Hajj packages are available" /> */}
+        <NoRecordsFound/>
       </div>
     );
   }

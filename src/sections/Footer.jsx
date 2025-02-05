@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -58,9 +57,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-x-3">
               <img src="/icons/footer/special.png" alt="icon" />
-              <p  className="hover:underline cursor-pointer">
-                Special Packages
-              </p>
+              <p className="hover:underline cursor-pointer">Special Packages</p>
             </li>
           </ul>
         </div>
@@ -90,7 +87,7 @@ const Footer = () => {
             <li className="flex items-center gap-x-3">
               <img src="/icons/footer/privacy.png" alt="icon" />
               <Link to="/privacyandpolicy" className="hover:underline">
-              Privacy Policy
+                Privacy Policy
               </Link>
             </li>
           </ul>
@@ -101,23 +98,24 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4 text-[#ce9128]">
             Contact Information
           </h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-4 text-sm">
             <li className="flex items-center gap-x-3">
               <img src="/icons/footer/phone.png" alt="icon" />
               <Link to="/about" className="hover:underline">
-              +1 (555) 123-4567
+                +92 331 000 9661
               </Link>
             </li>
             <li className="flex items-center gap-x-3">
               <img src="/icons/footer/email.png" alt="icon" />
               <Link to="/about" className="hover:underline">
-              info@gohijaz.com
+                info@gohijaz.com
               </Link>
             </li>
-            <li className="flex items-center gap-x-3">
+            <li className="flex items-start gap-x-3">
               <img src="/icons/footer/location.png" alt="icon" />
               <Link to="/about" className="hover:underline">
-              123 Business Street, Suite 100New York, NY 10001
+                Office # G-49 Akhwan Trade Centre, Near Balambat
+                Bridge,Timergara, Dir Lower, KPK, Pakistan
               </Link>
             </li>
           </ul>
@@ -151,7 +149,11 @@ const Footer = () => {
         {/* Social Media Icons */}
         <div className="flex items-center gap-x-8 mt-4">
           {/* Add your social media icons here */}
-          <a href="https://www.facebook.com/profile.php?id=61571939513995" target="_blank" className="text-[#ED8D02]">
+          <a
+            href="https://www.facebook.com/profile.php?id=61571939513995"
+            target="_blank"
+            className="text-[#ED8D02]"
+          >
             {/* Replace with actual icon */}
             <img src="/icons/footer/fbnew.png" alt="icon" />
           </a>
@@ -163,11 +165,19 @@ const Footer = () => {
             {/* Replace with actual icon */}
             <img src="/icons/footer/instanew.png" alt="icon" />
           </a>
-          <a href="https://linkedin.com/company/go-hijaz" target="_blank" className="text-[#ED8D02]">
+          <a
+            href="https://linkedin.com/company/go-hijaz"
+            target="_blank"
+            className="text-[#ED8D02]"
+          >
             {/* Replace with actual icon */}
             <img src="/icons/footer/linkedinnew.png" alt="icon" />
           </a>
-          <a href="https://www.youtube.com/@GoHijaz" target="_blank" className="text-[#ED8D02]">
+          <a
+            href="https://www.youtube.com/@GoHijaz"
+            target="_blank"
+            className="text-[#ED8D02]"
+          >
             {/* Replace with actual icon */}
             <img src="/icons/footer/ytnew.png" alt="icon" />
           </a>
@@ -188,16 +198,22 @@ const Footer = () => {
 
         {/* Third Line - Terms & Conditions and Privacy Policy */}
         <div className="text-sm flex">
-          <Link to="/terms&conditions" className="mr-4 hover:underline flex gap-x-2">
-          <span className="">
-            <img src="/icons/footer/terms.png" alt="icon" />
-          </span>
+          <Link
+            to="/terms&conditions"
+            className="mr-4 hover:underline flex gap-x-2"
+          >
+            <span className="">
+              <img src="/icons/footer/terms.png" alt="icon" />
+            </span>
             Terms & Conditions
           </Link>
-          <Link to="/privacyandpolicy" className="hover:underline flex gap-x-2 border-l border-gray-400">
-          <span className="ml-4">
-            <img src="/icons/footer/privacy.png" alt="icon" />
-          </span>
+          <Link
+            to="/privacyandpolicy"
+            className="hover:underline flex gap-x-2 border-l border-gray-400"
+          >
+            <span className="ml-4">
+              <img src="/icons/footer/privacy.png" alt="icon" />
+            </span>
             Privacy Policy
           </Link>
         </div>

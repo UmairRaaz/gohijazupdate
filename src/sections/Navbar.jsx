@@ -34,14 +34,34 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        packageDropdownRef.current &&
+        !packageDropdownRef.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsDropdownOpen(false); // Close dropdown on scroll
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav className="fixed bg-black py-4 top-0 left-0 right-0 z-50 px-6 md:px-10">
       <div className="flex w-full mx-auto items-center justify-between md:justify-center">
         {/* Logo */}
-        <Link
-          to={"/"}
-          className="flex-shrink-0 md:absolute md:left-10"
-        >
+        <Link to={"/"} className="flex-shrink-0 md:absolute md:left-10">
           <img src="/images/navnewtwo.png" alt="Logo" className="w-24" />
         </Link>
 
@@ -75,32 +95,24 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute mb-4 md:mb-0 z-50 left-0 mt-2 w-48 bg-black text-white py-2 rounded-md shadow-lg">
                 <Link
-                  onClick={() => {togglePackageDropdown(); toggleMobileMenu()}}
-                  to={"/packages"}
+                  onClick={() => {
+                    togglePackageDropdown();
+                    toggleMobileMenu();
+                  }}
+                  to={"/umrah-packages"}
                   className="block px-4 py-2 hover:bg-[#ED8D02] transition duration-300"
                 >
-                  Umrah Luxury
+                  Umrah Packages
                 </Link>
                 <Link
-                  onClick={() => {togglePackageDropdown(); toggleMobileMenu()}}
-                  to={"/packages"}
+                  onClick={() => {
+                    togglePackageDropdown();
+                    toggleMobileMenu();
+                  }}
+                  to={"/hajj-packages"}
                   className="block px-4 py-2 hover:bg-[#ED8D02] transition duration-300"
                 >
-                  Hajj 2025
-                </Link>
-                <Link
-                  onClick={() => {togglePackageDropdown(); toggleMobileMenu()}}
-                  to={"/packages"}
-                  className="block px-4 py-2 hover:bg-[#ED8D02] transition duration-300"
-                >
-                  Umrah Gold
-                </Link>
-                <Link
-                  onClick={() => {togglePackageDropdown(); toggleMobileMenu()}}
-                  to={"/packages"}
-                  className="block px-4 py-2 hover:bg-[#ED8D02] transition duration-300"
-                >
-                  Umrah Priority
+                  Hajj Hajj Packages
                 </Link>
               </div>
             )}

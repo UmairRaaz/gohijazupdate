@@ -90,7 +90,7 @@ const CityAndProvince = ({ filters, setFilters }) => {
               className="w-full flex justify-between px-2 font-poppin items-center text-xl rounded-lg p-2 focus:outline-none"
               onClick={toggleDistrict}
             >
-              Select District
+              Select City
               {isDistrictOpen ? (
                 <FaAngleUp className="text-gray-500" />
               ) : (
@@ -108,7 +108,7 @@ const CityAndProvince = ({ filters, setFilters }) => {
                 onChange={handleDistrictChange}
                 className="w-full p-2 border rounded-md outline-none"
               >
-                <option value="">-- Select District --</option>
+                <option value="">-- Select City --</option>
                 {provincesAndCities.Pakistan[selectedProvince].map(
                   (district) => (
                     <option key={district} value={district}>

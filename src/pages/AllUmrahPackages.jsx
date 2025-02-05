@@ -3,6 +3,7 @@ import PackageComponent from "../components/PackageComponent";
 import { PackageContext } from "../context/PackageContext";
 import NopackageAvailable from "../components/NopackageAvailable";
 import NewUmrahComponent from "../components/NewUmrahComponent";
+import NoRecordsFound from "../components/NoResultFound";
 
 const AllUmrahPackages = () => {
   const { packages } = useContext(PackageContext);
@@ -18,7 +19,8 @@ const AllUmrahPackages = () => {
   if (!umrahPackages || umrahPackages.length === 0) {
     return (
       <div className="mt-20">
-        <NopackageAvailable text="No Umrah packages are available" />
+        {/* <NopackageAvailable text="No Umrah packages are available" /> */}
+        <NoRecordsFound/>
       </div>
     );
   }

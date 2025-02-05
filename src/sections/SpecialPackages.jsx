@@ -31,7 +31,7 @@ const SpecialPackages = () => {
     >
       {/* Heading Section */}
       <div className="text-center mb-8 relative">
-        <h2 className="text-3xl md:text-5xl w-full px-2 md:px-0 md:max-w-2xl mx-auto font-bold text-[#4A4A4A]">
+        <h2 className="text-3xl md:text-5xl w-full px-2 md:px-0 text-center mx-auto font-bold text-[#4A4A4A]">
           Special Umrah and Hajj Packages
         </h2>
         <p className="text-[#454545] w-full md:max-w-2xl mx-auto text-xl mt-4">
