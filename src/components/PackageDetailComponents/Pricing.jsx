@@ -7,9 +7,14 @@ const Pricing = ({ price, packageUmrah, contactDetails, duration }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
-
+  
   const { phone, address, email, whatsapp } = contactDetails;
-  console.log(contactDetails);
+  console.log("whatsapp", whatsapp);
+  const localWhatsApp = whatsapp.startsWith("0092")
+  ? "0" + whatsapp.slice(4)
+  : whatsapp;
+
+console.log("Formatted WhatsApp:", localWhatsApp);
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -78,7 +83,7 @@ const Pricing = ({ price, packageUmrah, contactDetails, duration }) => {
       {/* Contact Button */}
       <div className="md:hidden mt-4 flex flex-col gap-y-2 px-4">
         <a
-          href={`https://api.whatsapp.com/send?phone=${whatsapp}`}
+          href={`https://api.whatsapp.com/send?phone=${localWhatsApp}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center h-12 text-xl gap-4 px-4 py-2 bg-[#0B840B] text-white rounded-lg shadow-md w-full transition"
@@ -140,7 +145,7 @@ const Pricing = ({ price, packageUmrah, contactDetails, duration }) => {
               <span className="text-sm text-gray-600">
                 {whatsapp ? (
                   <a
-                    href={`https://wa.me/${whatsapp}`}
+                    href={`https://wa.me/${localWhatsApp}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"

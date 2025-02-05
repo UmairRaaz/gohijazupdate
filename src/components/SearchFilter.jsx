@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const SearchFilter = ({isListView, setisListView }) => {
-  const [search, setSearch] = useState("");
+const SearchFilter = ({isListView, setisListView, search, setSearch }) => {
+
   const [city, setCity] = useState("all");
   const [packageType, setPackageType] = useState("all");
   const [sortBy, setSortBy] = useState("default");

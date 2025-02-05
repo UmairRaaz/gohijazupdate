@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +9,9 @@ const ContactUsPage = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false); // To manage submission state
+  const [successMessage, setSuccessMessage] = useState(""); // For success message
+  const [errorMessage, setErrorMessage] = useState(""); // For error message
 
   const handleChange = (e) => {
     setFormData({
@@ -14,18 +19,39 @@ const ContactUsPage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = (e) => {
+  const APIURI = "https://ghgohijazserverapi.gohijaz.com";
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    setIsSubmitting(true);
+    setSuccessMessage(""); // Clear any previous success message
+    setErrorMessage(""); // Clear any previous error message
+
+    try {
+      const response = await axios.post(
+        `${APIURI}/api/users/contact_us/add`,
+        {
+          full_name: formData.fullName,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      );
+      console.log("contact response", response)
+      if(response.data){
+        toast.success(response.data.message);
+        setFormData({ fullName: "", email: "", subject: "", message: "" }); 
+      }
+    } catch (error) {
+      toast.error("There was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
+    }
   };
 
   return (
     <div className="bg-[#f9fafc] font-roboto min-h-screen py-16">
       <div className="container mx-auto px-6">
         {/* Heading */}
-
         <div className="text-center my-8">
           <h1 className="md:text-4xl text-4xl font-bold text-black mb-4">
             Contact Us
@@ -36,7 +62,7 @@ const ContactUsPage = () => {
         </div>
 
         {/* Contact Form */}
-        <div className=" gap-8">
+        <div className="gap-8">
           {/* Form */}
           <div className="bg-white max-w-3xl mx-auto p-8 shadow-lg rounded-lg">
             <form onSubmit={handleSubmit}>
@@ -102,9 +128,10 @@ const ContactUsPage = () => {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-[#CE9137] text-white py-3 rounded-md mt-4 hover:bg-[#b6742c] transition duration-300"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
@@ -112,7 +139,7 @@ const ContactUsPage = () => {
           {/* Contact Information */}
           <div className="max-w-3xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Visit Us Card */}
-            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2  ">
+            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2">
               <div className="bg-[#f4f0e7] border rounded-full p-3 w-10 h-10 transition-all duration-300 ">
                 <img src="/newIcons/agency/visit.png" alt="icon" className="" />
               </div>
@@ -126,7 +153,7 @@ const ContactUsPage = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2  ">
+            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2">
               <div className="bg-[#f4f0e7] border rounded-full p-3 w-10 h-10 transition-all duration-300 ">
                 <img src="/newIcons/agency/phone.png" alt="icon" className="" />
               </div>
@@ -138,7 +165,7 @@ const ContactUsPage = () => {
                 <p className="text-gray-700">Whatsapp: +923310009661</p>
               </div>
             </div>
-            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2  ">
+            <div className="bg-white py-6 px-2 shadow-lg rounded-lg flex flex-col gap-y-2">
               <div className="bg-[#f4f0e7] border rounded-full p-3 w-10 h-10 transition-all duration-300 ">
                 <img src="/newIcons/agency/email.png" alt="icon" className="" />
               </div>
